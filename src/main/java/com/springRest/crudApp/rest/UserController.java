@@ -1,6 +1,8 @@
 package com.springRest.crudApp.rest;
 
 import com.springRest.crudApp.entity.User;
+import com.springRest.crudApp.rest.UserNotFoundException;
+import com.springRest.crudApp.service.UserService;
 import com.springRest.crudApp.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,14 +15,13 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @PostMapping("/addUser")
     public User addUser(@RequestBody User user) {
         userService.saveUser(user);
         return user;
     }
-
 
     @GetMapping("/view-all-user")
     public List<User> viewAllUsers() {
@@ -33,7 +34,7 @@ public class UserController {
         if (user != null) {
             return ResponseEntity.ok(user);
         } else {
-            return ResponseEntity.notFound().build();
+            throw new UserNotFoundException("User not found with ID: " + userId);
         }
     }
 
@@ -44,7 +45,7 @@ public class UserController {
             userService.deleteUser(userId);
             return ResponseEntity.ok().build();
         } else {
-            return ResponseEntity.notFound().build();
+            throw new UserNotFoundException("User not found with ID: " + userId);
         }
     }
 
@@ -61,8 +62,7 @@ public class UserController {
             userService.updateUser(user);
             return ResponseEntity.ok(user);
         } else {
-            return ResponseEntity.notFound().build();
+            throw new UserNotFoundException("User not found with ID: " + userId);
         }
     }
 }
-

@@ -1,12 +1,10 @@
-package com.springRest.crudApp.service;
+package com.springRest.crudApp.service.impl;
 
 import com.springRest.crudApp.dao.UserDao;
-import com.springRest.crudApp.dao.UserDaoImpl;
 import com.springRest.crudApp.entity.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

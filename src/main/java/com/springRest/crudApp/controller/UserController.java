@@ -1,9 +1,7 @@
-package com.springRest.crudApp.rest;
+package com.springRest.crudApp.controller;
 
 import com.springRest.crudApp.entity.User;
-import com.springRest.crudApp.rest.UserNotFoundException;
 import com.springRest.crudApp.service.UserService;
-import com.springRest.crudApp.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

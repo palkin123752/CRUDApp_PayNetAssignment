@@ -1,4 +1,4 @@
-package com.springRest.crudApp.rest;
+package com.springRest.crudApp.controller;
 
 public class UserErrorResponse {
 

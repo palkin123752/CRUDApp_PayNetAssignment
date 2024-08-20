@@ -1,4 +1,4 @@
-package com.springRest.crudApp.rest;
+package com.springRest.crudApp.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<?> handleCustomerNotFoundException(UserNotFoundException ex, WebRequest request) {
+    public ResponseEntity<?> handleUserNotFoundException(UserNotFoundException ex, WebRequest request) {
         UserErrorResponse errorResponse = new UserErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage(),System.currentTimeMillis());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
